@@ -46,7 +46,8 @@ export default function RoutineApp() {
     if (!content) return;
     try {
       await axios.put(`${API_URL}/${id}`, { content });
-      setRoutines(routines.map(item => (item.id === id ? { ...item, content } : item)));
+      setRoutines(routines.map(
+        item => (item.id === id ? { ...item, content } : item)));
       setEditingId(null);
       setContent("");
     } catch (error) {
@@ -71,6 +72,7 @@ export default function RoutineApp() {
       console.error("Error toggling complete", error);
     }
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Routine App</Text>
@@ -122,103 +124,91 @@ export default function RoutineApp() {
 const styles = StyleSheet.create({
 
   container: {
-    flex: 1,                // Take full available space
-    padding: 20,            // Equivalent to p-6
-    backgroundColor: "#f3f4f6", // bg-gray-100
-    alignItems: "center",   // Center items horizontally
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#f3f4f6",
+    alignItems: "center",
   },
 
-  // Title styles
   title: {
-    fontSize: 24,           // text-2xl
-    fontWeight: "bold",     // font-bold
-    marginBottom: 24,       // mb-6
-    color: "#2563eb",       // text-blue-600
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 24,
+    color: "#2563eb",
   },
 
-  // Input field styles
   input: {
     borderWidth: 1,
-    fontSize: 18,         // border
-    borderColor: "#d1d5db", // border-gray-300
-    padding: 12,            // p-3
-    marginBottom: 16,       // mb-4
-    width: "100%",          // w-full
-    borderRadius: 8,        // rounded-lg
-    backgroundColor: "white", // bg-white
-    // Shadow styles
-
+    fontSize: 18,
+    borderColor: "#d1d5db",
+    padding: 12,
+    marginBottom: 16,
+    width: "100%",
+    borderRadius: 8,
+    backgroundColor: "white",
   },
 
-  // FlatList styles
   list: {
-    flex: 1,                // Take remaining space
-    width: "100%",          // Full width
-    marginTop: 10,          // Space below the button
+    flex: 1,
+    width: "100%",
+    marginTop: 10,
   },
 
-  // Individual todo item container
   itemContainer: {
-    flexDirection: "row",   // flex-row
-    justifyContent: "space-between", // justify-between
-    alignItems: "center",   // items-center
-    borderWidth: 1,         // border
-    borderColor: "#e5e7eb", // border-gray-200
-    padding: 12,            // p-3
-    marginTop: 12,          // mt-3
-    borderRadius: 8,        // rounded-lg
-    backgroundColor: "white", // bg-white
-    // Shadow styles
-    elevation: 2,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
+    padding: 12,
+    marginTop: 12,
+    borderRadius: 8,
+    backgroundColor: "white",
+    elevation: 1,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
   },
 
-  // Todo text container
   textContainer: {
-    flex: 1,                // Take available space
-    marginRight: 16,        // Space before buttons
+    flex: 1,
+    marginRight: 16,
   },
 
-  // Normal text style
+
   itemText: {
-    fontSize: 18,           // text-lg
-    fontWeight: "500",      // font-medium
-    color: "#000",          // text-black
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#000",
   },
 
-  // Completed text style
+
   itemTextCompleted: {
-    fontSize: 18,           // text-lg
-    textDecorationLine: "line-through", // line-through
-    color: "#9ca3af",       // text-gray-400
+    fontSize: 18,
+    textDecorationLine: "line-through",
+    color: "#9ca3af",
   },
 
-  // Buttons container
   buttonsContainer: {
-    flexDirection: "row",   // flex-row
-    gap: 8,                 // gap-2
+    flexDirection: "row",
+    gap: 8,
   },
 
-  // Delete button style
+
+
   deleteButton: {
-    backgroundColor: "#ef4444", // bg-red-500
-    borderRadius: 20,        // rounded-full
-    padding: 8,              // p-2
-    width: 40,               // Fixed size for circle
+    backgroundColor: "#ef4444",
+    borderRadius: 20,
+    padding: 8,
+    width: 40,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
   },
 
-  // Edit button style
   editButton: {
-    backgroundColor: "#3b82f6", // bg-blue-500
-    borderRadius: 20,        // rounded-full
-    padding: 8,              // p-2
-    width: 40,               // Fixed size for circle
+    backgroundColor: "#3b82f6",
+    borderRadius: 20,
+    padding: 8,
+    width: 40,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
